@@ -1,0 +1,91 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("سكربت عام | Script Public", "DarkTheme")
+
+-- Credit Tab
+local Tab = Window:NewTab("Credit")
+local Section = Tab:NewSection("1 : Magstnic")
+local Section2 = Tab:NewSection("2 : M5tr")
+
+-- Wall Hop Tab
+local Tab2 = Window:NewTab("Wall Hop | وال هوب")
+local SectionWH = Tab2:NewSection("Wall Hop Controls")
+
+local UIS = game:GetService("UserInputService")
+
+-- Camera Functions
+local function flickCamera90Degrees()
+    local currentCam = workspace.CurrentCamera
+    local initialPos = currentCam.CFrame.Position
+    local initialRot = currentCam.CFrame - initialPos
+    currentCam.CFrame = CFrame.new(initialPos) * CFrame.Angles(0, math.rad(90), 0) * initialRot
+end
+
+local function flickCameraBack90Degrees()
+    local currentCam = workspace.CurrentCamera
+    local initialPos = currentCam.CFrame.Position
+    local initialRot = currentCam.CFrame - initialPos
+    currentCam.CFrame = CFrame.new(initialPos) * CFrame.Angles(0, math.rad(-90), 0) * initialRot
+end
+
+local function flickCameraSequence()
+    flickCamera90Degrees()
+    wait(0.03)
+    flickCameraBack90Degrees()
+end
+
+-- Wall Hop Buttons
+SectionWH:NewButton("WH 1 (Q)", "PC ONLY!", function()
+    UIS.InputBegan:Connect(function(input, processed)
+        if not processed and input.KeyCode == Enum.KeyCode.Q then
+            flickCameraSequence()
+        end
+    end)
+end)
+
+SectionWH:NewButton("WH 2 (E)", "PC ONLY!", function()
+    UIS.InputBegan:Connect(function(input, processed)
+        if not processed and input.KeyCode == Enum.KeyCode.E then
+            flickCameraSequence()
+        end
+    end)
+end)
+
+-- Time Bomb Duels Tab
+local Tab3 = Window:NewTab("🎄 Time Bomb Duels [Alpha]")
+local SectionTBD = Tab3:NewSection("Aimbot & Walk too")
+SectionTBD:NewButton("Aimbot & Walk too", "PC & Mobile", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/zyn-scripts/zYn.scripts/refs/heads/main/Auto"))()
+end)
+local SectionSoon = Tab3:NewSection("Soon ..?")
+
+-- Sword Tab
+local Tab4 = Window:NewTab("Sword")
+local SectionReach = Tab4:NewSection("Reach")
+SectionReach:NewButton("Reach Sword", "PC & Mobile", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/MaxicsSoft/XyrezAutoRank/main/StealTimeFromOthers.lua"))()
+end)
+
+-- Universal Tab
+local Tab5 = Window:NewTab("Universal")
+local SectionGfx = Tab5:NewSection("Graphics")
+SectionGfx:NewButton("Low Gfx", "PC & Mobile (not Good For Mobile)", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/s9FcpvMs"))()
+end)
+SectionGfx:NewButton("Low GFX", "PC & Mobile", function()
+    loadstring(game:HttpGet("https://pastefy.app/zHXeYX07/raw", true))()
+end)
+
+local SectionOther = Tab5:NewSection("I dont know what name")
+SectionOther:NewButton("Infinite Yield", "Good ALL maps", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/XXXXXXXX"))() -- ضع رابط السكربت هنا
+end)
+SectionOther:NewButton("Block Player", "Good for block", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/sabscripts063-cloud/Kdml-Not-Me/refs/heads/main/BlockPlayer"))()
+end)
+
+-- F1 Toggle للواجهة
+UIS.InputBegan:Connect(function(input, processed)
+    if not processed and input.KeyCode == Enum.KeyCode.F1 then
+        Window:Toggle()
+    end
+end)
