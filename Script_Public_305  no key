@@ -1,5 +1,12 @@
+-- Queue on teleport autoload
+if queue_on_teleport then
+    queue_on_teleport([[
+        loadstring(game:HttpGet("https://raw.githubusercontent.com/Magstnic/Public/refs/heads/main/Script_Public_305%20%20no%20key"))()
+    ]])
+end
+
 local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
-local Window = Library.CreateLib("سكربت عام | Script Public", "DarkTheme")
+local Window = Library.CreateLib("سكربت عام | Script Public", "DarkTheme") 
 
 -- Credit Tab
 local Tab = Window:NewTab("Credit")
@@ -9,7 +16,6 @@ local Section2 = Tab:NewSection("2 : M5tr")
 -- Wall Hop Tab
 local Tab2 = Window:NewTab("Wall Hop | وال هوب")
 local SectionWH = Tab2:NewSection("Wall Hop Controls")
-
 local UIS = game:GetService("UserInputService")
 
 -- Camera Functions
@@ -51,11 +57,12 @@ SectionWH:NewButton("WH 2 (E)", "PC ONLY!", function()
 end)
 
 -- Time Bomb Duels Tab
-local Tab3 = Window:NewTab("🎄 Time Bomb Duels [Alpha]")
+local Tab3 = Window:NewTab(" Time Bomb Duels [Alpha]")
 local SectionTBD = Tab3:NewSection("Aimbot & Walk too")
 SectionTBD:NewButton("Aimbot & Walk too", "PC & Mobile", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/zyn-scripts/zYn.scripts/refs/heads/main/Auto"))()
 end)
+
 local SectionSoon = Tab3:NewSection("Soon ..?")
 
 -- Sword Tab
@@ -83,9 +90,4 @@ SectionOther:NewButton("Block Player", "Good for block", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/sabscripts063-cloud/Kdml-Not-Me/refs/heads/main/BlockPlayer"))()
 end)
 
--- F1 Toggle للواجهة
-UIS.InputBegan:Connect(function(input, processed)
-    if not processed and input.KeyCode == Enum.KeyCode.F1 then
-        Window:Toggle()
-    end
-end)
+-- F1 Toggle للواج
