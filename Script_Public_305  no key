@@ -84,7 +84,7 @@ end)
 
 local SectionOther = Tab5:NewSection("I dont know what name")
 SectionOther:NewButton("Infinite Yield", "Good ALL maps", function()
-    loadstring(game:HttpGet("https://pastebin.com/raw/XXXXXXXX"))() -- ضع رابط السكربت هنا
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() -- ضع رابط السكربت هنا
 end)
 SectionOther:NewButton("Block Player", "Good for block", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/sabscripts063-cloud/Kdml-Not-Me/refs/heads/main/BlockPlayer"))()
