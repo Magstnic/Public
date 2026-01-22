@@ -2,100 +2,93 @@ local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHept
 local Window = Library.CreateLib("سكربت عام | Script Public", "DarkTheme") 
 
 -- Credit Tab
-local Tab = Window:NewTab("Credit")
-local Section = Tab:NewSection("1 : Magstnic")
-local Section2 = Tab:NewSection("2 : M5tr")
+local TabCredit = Window:NewTab("Credit")
+local CreditSection = TabCredit:NewSection("1 : Magstnic")
+local CreditSection2 = TabCredit:NewSection("2 : M5tr")
 
 -- Wall Hop Tab
-local Tab2 = Window:NewTab("Wall Hop | وال هوب")
-local SectionWH = Tab2:NewSection("Wall Hop Controls")
+local TabWH = Window:NewTab("Wall Hop | وال هوب")
+local SectionWH = TabWH:NewSection("Wall Hop Controls")
 local UIS = game:GetService("UserInputService")
 
 -- Camera Functions
 local function flickCamera90Degrees()
-    local currentCam = workspace.CurrentCamera
-    local initialPos = currentCam.CFrame.Position
-    local initialRot = currentCam.CFrame - initialPos
-    currentCam.CFrame = CFrame.new(initialPos) * CFrame.Angles(0, math.rad(90), 0) * initialRot
+    local cam = workspace.CurrentCamera
+    local pos = cam.CFrame.Position
+    local rot = cam.CFrame - pos
+    cam.CFrame = CFrame.new(pos) * CFrame.Angles(0, math.rad(90), 0) * rot
 end
 
 local function flickCameraBack90Degrees()
-    local currentCam = workspace.CurrentCamera
-    local initialPos = currentCam.CFrame.Position
-    local initialRot = currentCam.CFrame - initialPos
-    currentCam.CFrame = CFrame.new(initialPos) * CFrame.Angles(0, math.rad(-90), 0) * initialRot
+    local cam = workspace.CurrentCamera
+    local pos = cam.CFrame.Position
+    local rot = cam.CFrame - pos
+    cam.CFrame = CFrame.new(pos) * CFrame.Angles(0, math.rad(-90), 0) * rot
 end
 
 local function flickCameraSequence()
     flickCamera90Degrees()
-    wait(0.03)
+    task.wait(0.03)
     flickCameraBack90Degrees()
 end
 
--- Wall Hop Buttons
-SectionWH:NewButton("WH 1 (Q)", "PC ONLY!", function()
-    UIS.InputBegan:Connect(function(input, processed)
-        if not processed and input.KeyCode == Enum.KeyCode.Q then
-            flickCameraSequence()
-        end
-    end)
+-- Input (مرة وحدة فقط)
+UIS.InputBegan:Connect(function(input, processed)
+    if processed then return end
+    if input.KeyCode == Enum.KeyCode.Q or input.KeyCode == Enum.KeyCode.E then
+        flickCameraSequence()
+    end
 end)
 
-SectionWH:NewButton("WH 2 (E)", "PC ONLY!", function()
-    UIS.InputBegan:Connect(function(input, processed)
-        if not processed and input.KeyCode == Enum.KeyCode.E then
-            flickCameraSequence()
-        end
-    end)
-end)
+SectionWH:NewButton("WH (Q / E)", "PC ONLY!", function() end)
 
 -- Time Bomb Duels Tab
-local Tab3 = Window:NewTab(" Time Bomb Duels [Alpha]")
-local SectionTBD = Tab3:NewSection("Aimbot & Walk too")
+local TabTBD = Window:NewTab("Time Bomb Duels [Alpha]")
+local SectionTBD = TabTBD:NewSection("Aimbot & Walk too")
 SectionTBD:NewButton("Aimbot & Walk too", "PC & Mobile", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/zyn-scripts/zYn.scripts/refs/heads/main/Auto"))()
 end)
--- Steal A brainrot Tab
-local SectionSoon = Tab3:NewSection("Soon ..?")
-local Tab = Window:NewTab("Steal A Brainrot")
-Section:NewButton("Chilli Hub", "Mobile All exc & PC Some exc", function()
-    print("loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()
-")
+
+-- Steal A Brainrot Tab
+local TabSAB = Window:NewTab("Steal A Brainrot")
+local SectionSAB = TabSAB:NewSection("Hubs")
+
+SectionSAB:NewButton("Chilli Hub", "Mobile & PC", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/tienkhanh1/spicy/main/Chilli.lua"))()
 end)
-Section:NewButton("Kurd Hub", "All", function()
-    print("loadstring(game:HttpGet("https://raw.githubusercontent.com/Ninja10908/S4/refs/heads/main/Kurdhub"))()
-")
+
+SectionSAB:NewButton("Kurd Hub", "All", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Ninja10908/S4/refs/heads/main/Kurdhub"))()
 end)
-Section:NewButton("Tigy auto Bat", "All", function()
-    print("loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/e40160563eebb346c8444535dfc78573.lua"))()
-")
+
+SectionSAB:NewButton("Tigy Auto Bat", "All", function()
+    loadstring(game:HttpGet("https://api.luarmor.net/files/v4/loaders/e40160563eebb346c8444535dfc78573.lua"))()
 end)
-Section:NewButton("ButtonText", "ButtonInfo", function()
-    print("Clicked")
-end)
+
 -- Sword Tab
-local Tab4 = Window:NewTab("Sword")
-local SectionReach = Tab4:NewSection("Reach")
+local TabSword = Window:NewTab("Sword")
+local SectionReach = TabSword:NewSection("Reach")
 SectionReach:NewButton("Reach Sword", "PC & Mobile", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/MaxicsSoft/XyrezAutoRank/main/StealTimeFromOthers.lua"))()
 end)
 
 -- Universal Tab
-local Tab5 = Window:NewTab("Universal")
-local SectionGfx = Tab5:NewSection("Graphics")
-SectionGfx:NewButton("Low Gfx", "PC & Mobile (not Good For Mobile)", function()
+local TabUni = Window:NewTab("Universal")
+local SectionGfx = TabUni:NewSection("Graphics")
+
+SectionGfx:NewButton("Low Gfx", "PC & Mobile", function()
     loadstring(game:HttpGet("https://pastebin.com/raw/s9FcpvMs"))()
 end)
-SectionGfx:NewButton("Low GFX", "PC & Mobile", function()
+
+SectionGfx:NewButton("Low GFX 2", "PC & Mobile", function()
     loadstring(game:HttpGet("https://pastefy.app/zHXeYX07/raw", true))()
 end)
 
-local SectionOther = Tab5:NewSection("I dont know what name")
+local SectionOther = TabUni:NewSection("Other")
 SectionOther:NewButton("Infinite Yield", "Good ALL maps", function()
-    loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))() -- ضع رابط السكربت هنا
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
 end)
+
 SectionOther:NewButton("Block Player", "Good for block", function()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/sabscripts063-cloud/Kdml-Not-Me/refs/heads/main/BlockPlayer"))()
 end)
-
--- F1 Toggle للواج
